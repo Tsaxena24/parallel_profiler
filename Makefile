@@ -8,4 +8,4 @@ all:
 
 # Clean target to remove compiled files
 clean:
-	rm -f pro *.exe
+	rm -f profiler.exe
