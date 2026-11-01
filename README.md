@@ -1,5 +1,4 @@
-# Pure C++ CPU Thread Cores & Memory Layout Profiler
-
+# Pure C++ Parallel Profiler
 Benchmarking utility written in pure C++ to experimentally discover the limits of parallel data processing, thread management overhead, and cache structures on any CPU architecture.
 
 ## How it Works
@@ -21,8 +20,3 @@ You can explicitly configure the test parameters directly inside the code
 g++ -O3 -std=c++11 profiler.cpp -o profiler
 ./profiler
 ```
-
-##  Experiments to Try
-* **Thread Creation Overhead:** Set `VECTOR_SIZE = 500` and `NUM_THREADS = 8`. Notice how the parallel run is significantly slower than the single thread due to OS context-switching and thread creation costs.
-* **The Sweet Spot:** Set `VECTOR_SIZE = 2000000` and set `NUM_THREADS` to match your CPU's actual physical cores. Watch the multi-threaded ingestion speed skyrocket.
-* **Core Oversaturation:** Set `NUM_THREADS = 64` on a large vector array. Notice where the performance scaling plateaus or degrades as the CPU wastes clock cycles swapping registers.
