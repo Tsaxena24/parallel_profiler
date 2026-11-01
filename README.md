@@ -1,26 +1,24 @@
 # Pure C++ CPU Thread Cores & Memory Layout Profiler
 
-A production-grade benchmarking utility written in pure C++ to experimentally discover the limits of parallel data processing, thread management overhead, and cache structures on any CPU architecture.
+Benchmarking utility written in pure C++ to experimentally discover the limits of parallel data processing, thread management overhead, and cache structures on any CPU architecture.
 
 ## How it Works
-The program runs a comparative scientific experiment on your hardware:
+The program runs a comparative experiment on your hardware:
 1. It generates a massive array of randomized integers.
 2. It benchmarks a single-threaded baseline sort using `std::sort` (Introsort) and records the execution duration.
-3. It resets the array, calculates clean pointer slices based on your custom configuration, and forks the data chunks across multiple parallel `std::thread` workers.
-4. Each thread records its own high-precision execution duration.
-5. The main thread synchronizes the workers via a `.join()` barrier and executes a zero-copy cascading `std::inplace_merge` to stitch the datasets back together.
+3. It resets the array, calculates clean pointer slices based on custom configuration, and forks the data chunks across multiple parallel `std::thread` workers.
+4. The main thread synchronizes the workers via a `.join()` barrier and executes a zero-copy cascading `std::inplace_merge` to stitch the datasets back together.
+5. It output the baseline and threaded execution duration.
 
 ## How to Test Your Own Hardware
-You can explicitly configure the test parameters directly inside the code! 
-1. Open `main.cpp`.
+You can explicitly configure the test parameters directly inside the code
+1. Open `profiler.cpp`.
 2. Locate the **USER CONFIGURATION ZONE** at the very top of `main()`.
-3. Modify `VECTOR_SIZE` and `NUM_THREADS` to any parameters you want to stress-test.
+3. Modify `VECTOR_SIZE` and `NUM_THREADS` to any parameters you want to test.
 
 ##  Compilation and Execution
-To unleash true bare-metal performance, make sure to compile with maximum compiler optimizations (`-O3` flag):
-
 ```bash
-g++ -O3 -std=c++11 main.cpp -o profiler
+g++ -O3 -std=c++11 profiler.cpp -o profiler
 ./profiler
 ```
 
