@@ -9,11 +9,11 @@
 int main() {
 // ______________________________________________________________________
 //
-//    USER CONFIGURATION ZONE: CHANGE THESE TO BENCHMARK YOUR CPU
+//    USER CONFIGURATION ZONE
 // ______________________________________________________________________
 
-    const size_t VECTOR_SIZE = 2000000; // Try 500 (small) vs 2,000,000 (large)
-    const size_t NUM_THREADS = 4;       // Try matching your physical CPU core count
+    const size_t VECTOR_SIZE = 2000000;
+    const size_t NUM_THREADS = 4;
     std::cout<< "Time taken for vector size " << VECTOR_SIZE << " by: \n";
 // _______________________________________________________________________
 
